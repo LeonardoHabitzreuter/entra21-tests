@@ -55,5 +55,18 @@ namespace entra21_tests
             var expectedOutput = 2;
             Assert.Equal(expectedOutput, result);
         }
+        
+        [Fact]
+        public void should_return()
+        {
+            var firstNumber = 0;
+            var secondNumber = 6;
+            var calculator = new Calculator();
+
+            var result = calculator.Divide(firstNumber, secondNumber);
+
+            var expectedOutput = 0;
+            Assert.Equal(expectedOutput, result);
+        }
     }
 }
