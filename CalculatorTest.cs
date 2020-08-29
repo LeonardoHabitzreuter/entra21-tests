@@ -57,7 +57,7 @@ namespace entra21_tests
         }
         
         [Fact]
-        public void should_return()
+        public void should_return_0_when_passed_0_as_first_parameter()
         {
             var firstNumber = 0;
             var secondNumber = 6;
@@ -66,6 +66,7 @@ namespace entra21_tests
             var result = calculator.Divide(firstNumber, secondNumber);
 
             var expectedOutput = 0;
+
             Assert.Equal(expectedOutput, result);
         }
     }
