@@ -16,24 +16,33 @@ namespace entra21_tests
             return numbers;
         }
 
-        // public double Exercise1B()
-        // {
-        //     Console.WriteLine("decrescente");
+        // Dado que a aplicação está preparada. Quando o usuário chamar o exercício 1b,
+        // então a aplicação deverá retornar todos os números de 1 a 10 de forma decrescente
+        public int[] Exercise1B()
+        {
+            int[] numbers = new int[10];
+            
+            for (int counter = 10; counter > 0; counter--)
+            {
+                numbers[numbers.Length - counter] = counter;
+            }
 
-        //     for (int counter = 10; counter > 0; counter--)
-        //     {
-		// 		Console.WriteLine(counter);   
-        //     }
-        // }
+            return numbers;
+        }
 
-        // public double Exercise1C()
-        // {
-        //     System.Console.WriteLine("apenas os pares");
+        // Dado que a aplicação está preparada. Quando o usuário chamar o exercício 1c,
+        // então a aplicação deverá retornar os números de 1 a 10, mas somente os pares
+        public int[] Exercise1C()
+        {
+            var numbers = new int[5];
 
-        //     for (int counter = 2; counter < 11; counter += 2)
-        //     {
-        //         System.Console.WriteLine(counter);
-        //     }
-        // }
+            for (int counter = 2; counter < 11; counter+=2)
+            {
+                var index = (counter / 2) - 1;
+				numbers[index] = counter;
+            }
+
+            return numbers;
+        }
     }
 }
