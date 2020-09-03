@@ -44,5 +44,17 @@ namespace entra21_tests
 
             return numbers;
         }
+
+        public int Exercise2()
+		{
+			int sum = 0;
+
+            for (int counter = 1; counter < 101; counter++)
+            {
+				sum += counter;
+            }
+
+            return sum;
+		}
     }
 }

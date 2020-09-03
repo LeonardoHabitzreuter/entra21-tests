@@ -80,5 +80,18 @@ namespace entra21_tests
                 Assert.Equal(expectedOutput[i], returnedValues[i]);
             }
         }
+  
+        [Fact]
+        public void should_return_5050()
+        {
+            // Dado / Setup
+            var exercises = new Exercises();
+
+            // Quando / Ação
+            int result = exercises.Exercise2();
+
+            // Deve / Asserções
+            Assert.Equal(5050, result);
+        }
     }
 }
