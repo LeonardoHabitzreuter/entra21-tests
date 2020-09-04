@@ -13,3 +13,10 @@
     {
       return "test";
     }
+
+### Rodando os testes
+#### Todos os testes:
+    dotnet test
+
+#### Um teste específico:
+    dotnet test --filter "FullyQualifiedName=<namespace>.<class>.<test>"
