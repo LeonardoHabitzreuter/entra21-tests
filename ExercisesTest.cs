@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Xunit;
 
 namespace entra21_tests
@@ -92,6 +93,36 @@ namespace entra21_tests
 
             // Deve / Asserções
             Assert.Equal(5050, result);
+        }
+    
+        [Fact]
+        public void should_return_7_when_passed_5_and_9()
+        {
+            // Dado / Setup
+            var exercises = new Exercises();
+            
+            // criando uma lista com o número 5 na primeira posição e o número 9 na segunda
+            var myList = new List<int>(){5, 9};
+
+            // Quando / Ação
+            double result = exercises.Exercise4(myList);
+
+            // Deve / Asserções
+            Assert.Equal(7, result);
+        }
+
+        [Fact]
+        public void should_return_8_when_passed_4_and_6_and_8()
+        {
+            // Dado / Setup
+            var exercises = new Exercises();
+            var myList = new List<int>(){4, 6, 8};
+
+            // Quando / Ação
+            double result = exercises.Exercise4(myList);
+
+            // Deve / Asserções
+            Assert.Equal(6, result);
         }
     }
 }
