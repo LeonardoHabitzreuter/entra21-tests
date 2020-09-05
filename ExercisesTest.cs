@@ -68,18 +68,14 @@ namespace entra21_tests
             // Quando / Ação
             int[] returnedValues = exercises.Exercise1C();
 
-            // Deve / Asserções
-            var expectedOutput = new int[5]
-            {
-                2,4,6,8,10
-            };
-
-            Assert.Equal(5, returnedValues.Length);
-
-            for (int i = 0; i < expectedOutput.Length; i++)
-            {
-                Assert.Equal(expectedOutput[i], returnedValues[i]);
-            }
+            Assert.Collection(
+                returnedValues,
+                item1 => { Assert.Equal(2, item1); },
+                item2 => { Assert.Equal(4, item2); },
+                item3 => { Assert.Equal(6, item3); },
+                item4 => { Assert.Equal(8, item4); },
+                item5 => { Assert.Equal(10, item5); }
+            );            
         }
   
         [Fact]
