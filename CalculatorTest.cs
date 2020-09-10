@@ -4,45 +4,21 @@ namespace entra21_tests
 {
     public class CalculatorTest
     {
-        [Fact]
-        public void should_return_4_when_passed_2_and_2()
+        [Theory]
+        [InlineData(2, 2, 4)]
+        [InlineData(0, 0, 0)]
+        [InlineData(8, 0.5, 8.5)]
+        [InlineData(-2, 2, 0)]
+        [InlineData(-2.5, -3.5, -6)]
+        public void should_return_the_result_of_the_sum_between_2_parameters(double firstNumber, double secondNumber, double expected)
         {
-            var firstNumber = 2;
-            var secondNumber = 2;
             var calculator = new Calculator();
 
             var result = calculator.Sum(firstNumber, secondNumber);
 
-            var expectedOutput = 4;
-            Assert.Equal(expectedOutput, result);
+            Assert.Equal(expected, result);
         }
 
-        [Fact]
-        public void should_return_0_when_passed_0_and_0()
-        {
-            var firstNumber = 0;
-            var secondNumber = 0;
-            var calculator = new Calculator();
-
-            var result = calculator.Sum(firstNumber, secondNumber);
-
-            var expectedOutput = 0;
-            Assert.Equal(expectedOutput, result);
-        }
-
-        [Fact]
-        public void should_return_8_dot_5_when_passed_8_and_0_dot_5()
-        {
-            var firstNumber = 0;
-            var secondNumber = 0;
-            var calculator = new Calculator();
-
-            var result = calculator.Sum(firstNumber, secondNumber);
-
-            var expectedOutput = 0;
-            Assert.Equal(expectedOutput, result);
-        }
-        
         [Fact]
         public void should_return_2_when_passed_8_and_4()
         {
