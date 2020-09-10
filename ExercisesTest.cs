@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using Xunit;
 
 namespace entra21_tests
@@ -107,18 +108,20 @@ namespace entra21_tests
             Assert.Equal(7, result);
         }
 
-        [Fact]
-        public void should_return_8_when_passed_4_and_6_and_8()
+        [Theory]
+        [InlineData(new int[3]{4, 6, 8}, 6)]
+        [InlineData(new int[2]{4, 6}, 5)]
+        [InlineData(new int[4]{1, 2, 3, 4}, 2.5)]
+        public void should_return_the_average_between_ages(int[] ages, double expected)
         {
             // Dado / Setup
             var exercises = new Exercises();
-            var myList = new List<int>(){4, 6, 8};
 
             // Quando / Ação
-            double result = exercises.Exercise4(myList);
+            double result = exercises.Exercise4(ages.ToList());
 
             // Deve / Asserções
-            Assert.Equal(6, result);
+            Assert.Equal(expected, result);
         }
     }
 }
