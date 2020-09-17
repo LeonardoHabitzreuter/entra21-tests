@@ -127,7 +127,7 @@ namespace entra21_tests
         [Theory]
         [InlineData(6, new int[10]{6, 12, 18, 24, 30, 36, 42, 48, 54, 60})]
         [InlineData(5, new int[10]{5, 10, 15, 20, 25, 30, 35, 40, 45, 50})]
-        public void should_return_6_multiplied_by_1_to_10_when_passed_6(int number, int[] expectedResult)
+        public void should_return_the_input_multiplied_by_1_to_10(int number, int[] expectedResult)
         {
             // Dado / Setup
             var exercises = new Exercises();
