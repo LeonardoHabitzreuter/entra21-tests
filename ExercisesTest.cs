@@ -136,19 +136,7 @@ namespace entra21_tests
             var result = exercises.Exercise17(number);
 
             // Deve / Asserções
-            Assert.Collection(
-                result,
-                item1 => Assert.Equal(expectedResult[0], item1),
-                item2 => Assert.Equal(expectedResult[1], item2),
-                item3 => Assert.Equal(expectedResult[2], item3),
-                item4 => Assert.Equal(expectedResult[3], item4),
-                item5 => Assert.Equal(expectedResult[4], item5),
-                item6 => Assert.Equal(expectedResult[5], item6),
-                item7 => Assert.Equal(expectedResult[6], item7),
-                item8 => Assert.Equal(expectedResult[7], item8),
-                item9 => Assert.Equal(expectedResult[8], item9),
-                item10 => Assert.Equal(expectedResult[9], item10)
-            );
+            Assert.Equal(result, expectedResult);
         }
     }
 }
