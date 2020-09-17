@@ -1,6 +1,6 @@
 using Xunit;
 
-namespace entra21_tests
+namespace calculator
 {
     public class CalculatorTest
     {
@@ -22,8 +22,8 @@ namespace entra21_tests
         [Fact]
         public void should_return_2_when_passed_8_and_4()
         {
-            var firstNumber = 8;
-            var secondNumber = 4;
+            const int firstNumber = 8;
+            const int secondNumber = 4;
             var calculator = new Calculator();
 
             var result = calculator.Divide(firstNumber, secondNumber);

@@ -76,7 +76,7 @@ namespace entra21_tests
                 item3 => { Assert.Equal(6, item3); },
                 item4 => { Assert.Equal(8, item4); },
                 item5 => { Assert.Equal(10, item5); }
-            );            
+            );
         }
   
         [Fact]
@@ -122,6 +122,33 @@ namespace entra21_tests
 
             // Deve / Asserções
             Assert.Equal(expected, result);
+        }
+        
+        [Theory]
+        [InlineData(6, new int[10]{6, 12, 18, 24, 30, 36, 42, 48, 54, 60})]
+        [InlineData(5, new int[10]{5, 10, 15, 20, 25, 30, 35, 40, 45, 50})]
+        public void should_return_6_multiplied_by_1_to_10_when_passed_6(int number, int[] expectedResult)
+        {
+            // Dado / Setup
+            var exercises = new Exercises();
+            
+            // Quando / Ação
+            var result = exercises.Exercise17(number);
+
+            // Deve / Asserções
+            Assert.Collection(
+                result,
+                item1 => Assert.Equal(expectedResult[0], item1),
+                item2 => Assert.Equal(expectedResult[1], item2),
+                item3 => Assert.Equal(expectedResult[2], item3),
+                item4 => Assert.Equal(expectedResult[3], item4),
+                item5 => Assert.Equal(expectedResult[4], item5),
+                item6 => Assert.Equal(expectedResult[5], item6),
+                item7 => Assert.Equal(expectedResult[6], item7),
+                item8 => Assert.Equal(expectedResult[7], item8),
+                item9 => Assert.Equal(expectedResult[8], item9),
+                item10 => Assert.Equal(expectedResult[9], item10)
+            );
         }
     }
 }

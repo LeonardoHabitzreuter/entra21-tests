@@ -1,0 +1,80 @@
+using System.Collections.Generic;
+using System.Linq;
+
+namespace entra21_tests
+{
+    class Election
+    {
+        public List<(int id, string name, int votes)> Candidates { get; set; }
+
+        public bool CreateCandidates(List<(int id, string name, int votes)> candidates, string password)
+        {
+            if (password == "Pa$$w0rd")
+            {
+                Candidates = candidates;
+                return true;
+            }
+            return false;
+        }
+
+        public List<string> ShowCandidates()
+        {
+            return Candidates
+                .Select(candidate => $"Vote {candidate.id} para o candidato: {candidate.name}")
+                .ToList();
+        }
+
+        public void Vote(int id)
+        {
+            Candidates = Candidates.Select(candidate => );
+            Candidates[vote - 1].votes = 8;
+
+        }
+
+			static void Exercise6()
+			{
+
+					if (mode == votesMode)
+					{
+											for (int i = 0; i < candidates.Length; i++)
+											{
+								System.Console.WriteLine($"Vote {i + 1} para o candidato: {candidates[i].name}"); 
+											}
+
+						var vote = Int32.Parse(Console.ReadLine());
+						candidates[vote - 1].votes++;
+					}
+				}
+
+							var winner = candidates[0];
+							var isDraw = false;
+							var drawCandidates = winner.name;
+
+							for (int i = 1; i < candidates.Length; i++)
+							{
+									var currentCandidate = candidates[i];
+
+									if (currentCandidate.votes > winner.votes)
+									{
+											winner = currentCandidate;
+											drawCandidates = currentCandidate.name;
+									}
+									else if (currentCandidate.votes == winner.votes)
+									{
+											isDraw = true;
+											drawCandidates += $", {currentCandidate.name}";
+									}
+							}
+
+				if (isDraw)
+				{
+					System.Console.WriteLine($"Segundo turno entre: {drawCandidates}!");
+				}
+				else
+				{
+					System.Console.WriteLine($"O vencedor é: {winner.name}");
+					System.Console.WriteLine($"Com o total de: {winner.votes} votos!");
+				}
+			}
+    }
+}
