@@ -76,38 +76,35 @@ namespace entra21_tests
 
         public void Exercise6()
 		{
-            var vote = Int32.Parse(Console.ReadLine());
-            candidates[vote - 1].votes++;
+            // var winner = candidates[0];
+            // var isDraw = false;
+            // var drawCandidates = winner.name;
 
-            var winner = candidates[0];
-            var isDraw = false;
-            var drawCandidates = winner.name;
+            // for (int i = 1; i < candidates.Length; i++)
+            // {
+            //     var currentCandidate = candidates[i];
 
-            for (int i = 1; i < candidates.Length; i++)
-            {
-                var currentCandidate = candidates[i];
+            //     if (currentCandidate.votes > winner.votes)
+            //     {
+            //         winner = currentCandidate;
+            //         drawCandidates = currentCandidate.name;
+            //     }
+            //     else if (currentCandidate.votes == winner.votes)
+            //     {
+            //         isDraw = true;
+            //         drawCandidates += $", {currentCandidate.name}";
+            //     }
+            // }
 
-                if (currentCandidate.votes > winner.votes)
-                {
-                    winner = currentCandidate;
-                    drawCandidates = currentCandidate.name;
-                }
-                else if (currentCandidate.votes == winner.votes)
-                {
-                    isDraw = true;
-                    drawCandidates += $", {currentCandidate.name}";
-                }
-            }
-
-			if (isDraw)
-			{
-				System.Console.WriteLine($"Segundo turno entre: {drawCandidates}!");
-			}
-			else
-			{
-				System.Console.WriteLine($"O vencedor é: {winner.name}");
-				System.Console.WriteLine($"Com o total de: {winner.votes} votos!");
-			}
+			// if (isDraw)
+			// {
+			// 	System.Console.WriteLine($"Segundo turno entre: {drawCandidates}!");
+			// }
+			// else
+			// {
+			// 	System.Console.WriteLine($"O vencedor é: {winner.name}");
+			// 	System.Console.WriteLine($"Com o total de: {winner.votes} votos!");
+			// }
 		}
     
         public IEnumerable<int> Exercise17(int number)

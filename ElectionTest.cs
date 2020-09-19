@@ -39,6 +39,7 @@ namespace entra21_tests
             Assert.True(created);
             
             // Estamos acessando a PROPRIEDADE Candidates, que faz parte do ESTADO do OBJETO election
+            Assert.Equal(1, election.Candidates.Count);
             Assert.Equal(candidate.id, election.Candidates[0].id);
             Assert.Equal(candidate.name, election.Candidates[0].name);
         }
@@ -62,6 +63,29 @@ namespace entra21_tests
             // Deve / Asserções
             Assert.Equal($"Vote {candidate.id} para o candidato: {candidate.name}", result[0]);
             Assert.Equal($"Vote {candidate2.id} para o candidato: {candidate2.name}", result[1]);
+        }
+
+        [Fact]
+        public void should_vote_twice_in_candidate_Fernando()
+        {
+            // Dado / Setup
+            // OBJETO election
+            var election = new Election();
+            (int id, string name) fernando = (1, "Fernando");
+            (int id, string name) ana = (2, "Ana");
+            var candidates = new List<(int id, string name)>{fernando, ana};
+            election.CreateCandidates(candidates, "Pa$$w0rd");
+            
+            // Quando / Ação
+            // Estamos acessando o MÉTODO ShowMenu do OBJETO election
+            election.Vote(fernando.id);
+            election.Vote(fernando.id);
+
+            // Deve / Asserções
+            var candidateFernando = election.Candidates.Find(x => x.id == fernando.id);
+            var candidateAna = election.Candidates.Find(x => x.id == ana.id);
+            Assert.Equal(2, candidateFernando.votes);
+            Assert.Equal(0, candidateAna.votes);
         }
     }
 }
