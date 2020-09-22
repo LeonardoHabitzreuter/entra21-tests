@@ -10,7 +10,7 @@ namespace entra21_tests
         {
             // Dado / Setup
             var election = new Election();
-            var candidates = new List<(int id, string name)>{(1, "José")};
+            var candidates = new List<string>{"José"};
 
             // Quando / Ação
             var created = election.CreateCandidates(candidates, "incorrect");
@@ -27,8 +27,8 @@ namespace entra21_tests
 
             // OBJETO election
             var election = new Election();
-            (int id, string name) candidate = (1, "José");
-            var candidates = new List<(int id, string name)>{candidate};
+            string candidate = "José";
+            var candidates = new List<string>{candidate};
 
             // Quando / Ação
 
@@ -40,29 +40,27 @@ namespace entra21_tests
             
             // Estamos acessando a PROPRIEDADE Candidates, que faz parte do ESTADO do OBJETO election
             Assert.Equal(1, election.Candidates.Count);
-            Assert.Equal(candidate.id, election.Candidates[0].id);
-            Assert.Equal(candidate.name, election.Candidates[0].name);
+            Assert.Equal(candidate, election.Candidates[0].name);
         }
 
         [Fact]
-        public void should_return_same_candidates()
+        public void should_not_generate_same_id_for_both_candidates()
         {
             // Dado / Setup
 
             // OBJETO election
             var election = new Election();
-            (int id, string name) candidate = (1, "José");
-            (int id, string name) candidate2 = (2, "Ana");
-            var candidates = new List<(int id, string name)>{candidate, candidate2};
+            string Jose = "José";
+            string Ana = "Ana";
+            var candidates = new List<string>{Jose, Ana};
             election.CreateCandidates(candidates, "Pa$$w0rd");
             
             // Quando / Ação
-            // Estamos acessando o MÉTODO ShowMenu do OBJETO election
-            var result = election.ShowMenu();
+            var candidateJose = election.GetCandidateIdByName(Jose);
+            var candidateAna = election.GetCandidateIdByName(Ana);
 
             // Deve / Asserções
-            Assert.Equal($"Vote {candidate.id} para o candidato: {candidate.name}", result[0]);
-            Assert.Equal($"Vote {candidate2.id} para o candidato: {candidate2.name}", result[1]);
+            Assert.NotEqual(candidateAna, candidateJose);
         }
 
         [Fact]
@@ -71,19 +69,21 @@ namespace entra21_tests
             // Dado / Setup
             // OBJETO election
             var election = new Election();
-            (int id, string name) fernando = (1, "Fernando");
-            (int id, string name) ana = (2, "Ana");
-            var candidates = new List<(int id, string name)>{fernando, ana};
+            string fernando = "Fernando";
+            string ana = "Ana";
+            var candidates = new List<string>{fernando, ana};
             election.CreateCandidates(candidates, "Pa$$w0rd");
-            
+            var fernandoId = election.GetCandidateIdByName(fernando);
+            var anaId = election.GetCandidateIdByName(ana);
+
             // Quando / Ação
             // Estamos acessando o MÉTODO ShowMenu do OBJETO election
-            election.Vote(fernando.id);
-            election.Vote(fernando.id);
+            election.Vote(fernandoId);
+            election.Vote(fernandoId);
 
             // Deve / Asserções
-            var candidateFernando = election.Candidates.Find(x => x.id == fernando.id);
-            var candidateAna = election.Candidates.Find(x => x.id == ana.id);
+            var candidateFernando = election.Candidates.Find(x => x.id == fernandoId);
+            var candidateAna = election.Candidates.Find(x => x.id == anaId);
             Assert.Equal(2, candidateFernando.votes);
             Assert.Equal(0, candidateAna.votes);
         }
@@ -94,20 +94,21 @@ namespace entra21_tests
             // Dado / Setup
             // OBJETO election
             var election = new Election();
-            (int id, string name) fernando = (1, "Fernando");
-            (int id, string name) ana = (2, "Ana");
-            var candidates = new List<(int id, string name)>{fernando, ana};
+            string fernando = "Fernando";
+            string ana = "Ana";
+            var candidates = new List<string>{fernando, ana};
             election.CreateCandidates(candidates, "Pa$$w0rd");
+            var anaId = election.GetCandidateIdByName(ana);
             
             // Quando / Ação
             // Estamos acessando o MÉTODO ShowMenu do OBJETO election
-            election.Vote(ana.id);
-            election.Vote(ana.id);
+            election.Vote(anaId);
+            election.Vote(anaId);
             var winners = election.GetWinners();
 
             // Deve / Asserções
             Assert.Equal(1, winners.Count);
-            Assert.Equal(ana.id, winners[0].id);
+            Assert.Equal(anaId, winners[0].id);
             Assert.Equal(2, winners[0].votes);
         }
 
@@ -117,20 +118,22 @@ namespace entra21_tests
             // Dado / Setup
             // OBJETO election
             var election = new Election();
-            (int id, string name) fernando = (1, "Fernando");
-            (int id, string name) ana = (2, "Ana");
-            var candidates = new List<(int id, string name)>{fernando, ana};
+            string fernando = "Fernando";
+            string ana = "Ana";
+            var candidates = new List<string>{fernando, ana};
             election.CreateCandidates(candidates, "Pa$$w0rd");
+            var fernandoId = election.GetCandidateIdByName(fernando);
+            var anaId = election.GetCandidateIdByName(ana);
             
             // Quando / Ação
             // Estamos acessando o MÉTODO ShowMenu do OBJETO election
-            election.Vote(ana.id);
-            election.Vote(fernando.id);
+            election.Vote(anaId);
+            election.Vote(fernandoId);
             var winners = election.GetWinners();
 
             // Deve / Asserções
-            var candidateFernando = winners.Find(x => x.id == fernando.id);
-            var candidateAna = winners.Find(x => x.id == ana.id);
+            var candidateFernando = winners.Find(x => x.id == fernandoId);
+            var candidateAna = winners.Find(x => x.id == anaId);
             Assert.Equal(1, candidateFernando.votes);
             Assert.Equal(1, candidateAna.votes);
         }
