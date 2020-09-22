@@ -40,5 +40,24 @@ namespace entra21_tests
                     : candidate;
             }).ToList();
         }
+
+        public List<(int id, string name, int votes)> GetWinners()
+        {
+            var winners = new List<(int id, string name, int votes)>{Candidates[0]};
+
+            for (int i = 1; i < Candidates.Count; i++)
+            {
+                if (Candidates[i].votes > winners[0].votes)
+                {
+                    winners.Clear();
+                    winners.Add(Candidates[i]);
+                }
+                else if (Candidates[i].votes == winners[0].votes)
+                {
+                    winners.Add(Candidates[i]);
+                }
+            }
+            return winners;
+        }
     }
 }

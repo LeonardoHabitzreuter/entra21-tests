@@ -87,5 +87,52 @@ namespace entra21_tests
             Assert.Equal(2, candidateFernando.votes);
             Assert.Equal(0, candidateAna.votes);
         }
+
+        [Fact]
+        public void should_return_Ana_as_winner_when_only_Ana_receives_votes()
+        {
+            // Dado / Setup
+            // OBJETO election
+            var election = new Election();
+            (int id, string name) fernando = (1, "Fernando");
+            (int id, string name) ana = (2, "Ana");
+            var candidates = new List<(int id, string name)>{fernando, ana};
+            election.CreateCandidates(candidates, "Pa$$w0rd");
+            
+            // Quando / Ação
+            // Estamos acessando o MÉTODO ShowMenu do OBJETO election
+            election.Vote(ana.id);
+            election.Vote(ana.id);
+            var winners = election.GetWinners();
+
+            // Deve / Asserções
+            Assert.Equal(1, winners.Count);
+            Assert.Equal(ana.id, winners[0].id);
+            Assert.Equal(2, winners[0].votes);
+        }
+
+        [Fact]
+        public void should_return_both_candidates_when_occurs_draw()
+        {
+            // Dado / Setup
+            // OBJETO election
+            var election = new Election();
+            (int id, string name) fernando = (1, "Fernando");
+            (int id, string name) ana = (2, "Ana");
+            var candidates = new List<(int id, string name)>{fernando, ana};
+            election.CreateCandidates(candidates, "Pa$$w0rd");
+            
+            // Quando / Ação
+            // Estamos acessando o MÉTODO ShowMenu do OBJETO election
+            election.Vote(ana.id);
+            election.Vote(fernando.id);
+            var winners = election.GetWinners();
+
+            // Deve / Asserções
+            var candidateFernando = winners.Find(x => x.id == fernando.id);
+            var candidateAna = winners.Find(x => x.id == ana.id);
+            Assert.Equal(1, candidateFernando.votes);
+            Assert.Equal(1, candidateAna.votes);
+        }
     }
 }
