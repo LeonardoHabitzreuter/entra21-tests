@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using Xunit;
 
@@ -37,7 +38,7 @@ namespace entra21_tests
 
             // Deve / Asserções
             Assert.True(created);
-            
+
             // Estamos acessando a PROPRIEDADE Candidates, que faz parte do ESTADO do OBJETO election
             Assert.Equal(1, election.Candidates.Count);
             Assert.Equal(candidate, election.Candidates[0].name);

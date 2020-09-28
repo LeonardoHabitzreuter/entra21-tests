@@ -8,7 +8,8 @@ namespace entra21_tests
     {
         // Propriedade abaixo:
         // Sempre em PascalCase
-        public List<(Guid id, string name, int votes)> Candidates { get; set; }
+        // Esta propriedade tem a sua escrita privada, ou seja, ninguém de fora da classe pode alterar seu valor
+        public List<(Guid id, string name, int votes)> Candidates { get; private set; }
         
         public bool CreateCandidates(List<string> candidateNames, string password)
         {
