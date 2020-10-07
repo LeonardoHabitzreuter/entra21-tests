@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using Domain;
 using Xunit;
 
 namespace entra21_tests
@@ -140,4 +141,3 @@ namespace entra21_tests
         }
     }
 }
->>>>>>> 089f90319665fddb0f3c9655f62e812a6c7be134:ElectionTest.cs
