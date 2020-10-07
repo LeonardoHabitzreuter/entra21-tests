@@ -1,9 +1,8 @@
 using System.Collections.Generic;
 using System.Linq;
-using Domain;
 using Xunit;
 
-namespace Tests
+namespace entra21_tests
 {
     public class ElectionTest
     {
@@ -18,7 +17,7 @@ namespace Tests
             var created = election.CreateCandidates(candidates, "incorrect");
 
             // Deve / Asserções
-            Assert.Null(election.Candidates);
+            Assert.Empty(election.Candidates);
             Assert.False(created);
         }
 
@@ -141,3 +140,4 @@ namespace Tests
         }
     }
 }
+>>>>>>> 089f90319665fddb0f3c9655f62e812a6c7be134:ElectionTest.cs
