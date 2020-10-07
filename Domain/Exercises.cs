@@ -1,9 +1,9 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace entra21_tests
+namespace Domain
 {
-    class Exercises
+    public class Exercises
     {
         public int[] Exercise1A()
         {
