@@ -71,6 +71,26 @@ namespace entra21_tests
         }
 
         [Fact]
+        public void Should_return_false_and_not_vote_when_CPF_is_invalid()
+        {
+            // Dado / Setup
+            // OBJETO election
+            var election = new Election();
+            var Jose = new Candidate("José", "895.456.214-78");
+            var candidates = new List<Candidate>{Jose};
+
+            election.CreateCandidates(candidates, "Pa$$w0rd");
+
+            // Quando / Ação
+            var voteResult = election.Vote("1321");
+
+            // Deve / Asserções
+            var candidateJose = election.Candidates.First(x => x.Id == Jose.Id);
+            Assert.Equal(0, candidateJose.Votes);
+            Assert.False(voteResult);
+        }
+
+        [Fact]
         public void Should_return_Ana_as_winner_when_only_Ana_receives_votes()
         {
             // Dado / Setup

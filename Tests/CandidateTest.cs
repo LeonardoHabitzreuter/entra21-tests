@@ -62,7 +62,7 @@ namespace Tests
         [InlineData("640.368.560-6")]
         [InlineData("640.368.560-6a")]
         [InlineData("640.368.560-061")]
-        public void Should_return_false_when_CPF_is_not_valid(string CPF)
+        public void Should_return_false_when_CPF_is_invalid(string CPF)
         {
             // Dado / Setup
             var Jose = new Candidate("José", CPF);
