@@ -11,7 +11,7 @@ namespace Tests
         [InlineData(8, 0.5, 8.5)]
         [InlineData(-2, 2, 0)]
         [InlineData(-2.5, -3.5, -6)]
-        public void should_return_the_result_of_the_sum_between_2_parameters(double firstNumber, double secondNumber, double expected)
+        public void Should_return_the_result_of_the_sum_between_2_parameters(double firstNumber, double secondNumber, double expected)
         {
             var calculator = new Calculator();
 
@@ -21,7 +21,7 @@ namespace Tests
         }
 
         [Fact]
-        public void should_return_2_when_passed_8_and_4()
+        public void Should_return_2_when_passed_8_and_4()
         {
             const int firstNumber = 8;
             const int secondNumber = 4;
@@ -34,7 +34,7 @@ namespace Tests
         }
         
         [Fact]
-        public void should_return_0_when_passed_0_as_first_parameter()
+        public void Should_return_0_when_passed_0_as_first_parameter()
         {
             var firstNumber = 0;
             var secondNumber = 6;

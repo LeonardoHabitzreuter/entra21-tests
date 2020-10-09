@@ -8,7 +8,7 @@ namespace entra21_tests
     public class ElectionTest
     {
         [Fact]
-        public void should_not_create_candidates_when_password_is_incorrect()
+        public void Should_not_create_candidates_when_password_is_incorrect()
         {
             // Dado / Setup
             var election = new Election();
@@ -24,7 +24,7 @@ namespace entra21_tests
         }
 
         [Fact]
-        public void should_create_candidates_when_password_is_correct()
+        public void Should_create_candidates_when_password_is_correct()
         {
             // Dado / Setup
 
@@ -47,7 +47,7 @@ namespace entra21_tests
         }
 
         [Fact]
-        public void should_vote_twice_in_candidate_Jose()
+        public void Should_vote_twice_in_candidate_Jose()
         {
             // Dado / Setup
             // OBJETO election
@@ -71,7 +71,7 @@ namespace entra21_tests
         }
 
         [Fact]
-        public void should_return_Ana_as_winner_when_only_Ana_receives_votes()
+        public void Should_return_Ana_as_winner_when_only_Ana_receives_votes()
         {
             // Dado / Setup
             // OBJETO election
@@ -94,7 +94,7 @@ namespace entra21_tests
         }
 
         [Fact]
-        public void should_return_both_candidates_when_occurs_draw()
+        public void Should_return_both_candidates_when_occurs_draw()
         {
             // Dado / Setup
             // OBJETO election

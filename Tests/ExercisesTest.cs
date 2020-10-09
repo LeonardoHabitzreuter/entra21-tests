@@ -8,7 +8,7 @@ namespace Tests
     public class ExercisesTest
     {
         [Fact]
-        public void should_return_an_array_from_1_to_10()
+        public void Should_return_an_array_from_1_to_10()
         {
             // BDD - Behavior Driven Design
             // Dado, Quando, Deve
@@ -35,7 +35,7 @@ namespace Tests
         }
 
         [Fact]
-        public void should_return_an_array_from_10_to_1()
+        public void Should_return_an_array_from_10_to_1()
         {
             // Dado que a aplicação está preparada. Quando o usuário chamar o exercício 1b,
             // então a aplicação deverá retornar todos os números de 1 a 10 de forma decrescente
@@ -59,7 +59,7 @@ namespace Tests
         }
         
         [Fact]
-        public void should_return_an_array_from_1_to_10_but_only_even()
+        public void Should_return_an_array_from_1_to_10_but_only_even()
         {
             // Dado que a aplicação está preparada. Quando o usuário chamar o exercício 1c,
             // então a aplicação deverá retornar os números de 1 a 10, mas somente os pares
@@ -81,7 +81,7 @@ namespace Tests
         }
   
         [Fact]
-        public void should_return_5050()
+        public void Should_return_5050()
         {
             // Dado / Setup
             var exercises = new Exercises();
@@ -94,7 +94,7 @@ namespace Tests
         }
     
         [Fact]
-        public void should_return_7_when_passed_5_and_9()
+        public void Should_return_7_when_passed_5_and_9()
         {
             // Dado / Setup
             var exercises = new Exercises();
@@ -113,7 +113,7 @@ namespace Tests
         [InlineData(new int[3]{4, 6, 8}, 6)]
         [InlineData(new int[2]{4, 6}, 5)]
         [InlineData(new int[4]{1, 2, 3, 4}, 2.5)]
-        public void should_return_the_average_between_ages(int[] ages, double expected)
+        public void Should_return_the_average_between_ages(int[] ages, double expected)
         {
             // Dado / Setup
             var exercises = new Exercises();
@@ -128,7 +128,7 @@ namespace Tests
         [Theory]
         [InlineData(6, new int[10]{6, 12, 18, 24, 30, 36, 42, 48, 54, 60})]
         [InlineData(5, new int[10]{5, 10, 15, 20, 25, 30, 35, 40, 45, 50})]
-        public void should_return_the_input_multiplied_by_1_to_10(int number, int[] expectedResult)
+        public void Should_return_the_input_multiplied_by_1_to_10(int number, int[] expectedResult)
         {
             // Dado / Setup
             var exercises = new Exercises();
