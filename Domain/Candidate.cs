@@ -40,11 +40,11 @@ namespace Domain
                 return false;
             }
 
-            // var first = cpf[0];
-            // if (cpf.Substring(1, 11).All(x => x == first))
-            // {
-            //     return false;
-            // }
+            var first = cpf[0];
+            if (cpf.Substring(1, 10).All(x => x == first))
+            {
+                return false;
+            }
 
             int[] multiplier1 = new int[9] { 10, 9, 8, 7, 6, 5, 4, 3, 2 };
             int[] multiplier2 = new int[10] { 11, 10, 9, 8, 7, 6, 5, 4, 3, 2 };
