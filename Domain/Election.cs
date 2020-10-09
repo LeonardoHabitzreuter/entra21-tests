@@ -8,29 +8,27 @@ namespace Domain
     {
         // Esta propriedade tem a sua escrita privada, ou seja, ninguém de fora da classe pode alterar seu valor
         // Propriedade privada SEMPRE em camelcase
-        private List<(Guid id, string name, int votes)> candidates { get; set; }
+        private List<Candidate> _candidates { get; set; }
 
         // Propriedade pública SEMPRE em PascalCase
         // Propriedade apenas com GET pode ser usada com arrow
-        public IReadOnlyCollection<(Guid id, string name, int votes)> Candidates => candidates;
+        public IReadOnlyCollection<Candidate> Candidates => _candidates;
      
         public Election()
         {
-            candidates = new List<(Guid id, string name, int votes)>();
+            _candidates = new List<Candidate>();
         }
 
-        public bool CreateCandidates(List<string> candidateNames, string password)
+        public bool CreateCandidates(List<Candidate> candidates, string password)
         {
             if (password == "Pa$$w0rd")
             {
-                if (candidateNames == null)
+                if (candidates == null)
                 {
                     return true;
                 }
                 
-                candidates = candidateNames.Select(candidateName => {
-                    return (Guid.NewGuid(), candidateName, 0);
-                }).ToList();
+                _candidates = candidates;
 
                 return true;
             }
@@ -40,37 +38,32 @@ namespace Domain
             }
         }
 
-        // ToDo: Criar método que retorne um Guid que represente o candidato pesquisado por CPF
-
-        // ToDo: Este método deve retornar a lista de candidatos que tem o mesmo nome informado
-        public Guid GetCandidateIdByName(string name)
+        public bool Vote(string cpf)
         {
-            return candidates.First(x => x.name == name).id;
-        }
-
-        public void Vote(Guid id)
-        {
-            candidates = candidates.Select(candidate => {
-                return candidate.id == id
-                    ? (candidate.id, candidate.name, candidate.votes + 1)
-                    : candidate;
-            }).ToList();
-        }
-
-        public List<(Guid id, string name, int votes)> GetWinners()
-        {
-            var winners = new List<(Guid id, string name, int votes)>{candidates[0]};
-
-            for (int i = 1; i < candidates.Count; i++)
+            var candidate = _candidates.FirstOrDefault(x => x.CPF == cpf);
+            if (candidate == null)
             {
-                if (candidates[i].votes > winners[0].votes)
+                return false;
+            }
+
+            candidate.Vote();
+            return true;
+        }
+
+        public List<Candidate> GetWinners()
+        {
+            var winners = new List<Candidate>{_candidates[0]};
+
+            for (int i = 1; i < _candidates.Count; i++)
+            {
+                if (_candidates[i].Votes > winners[0].Votes)
                 {
                     winners.Clear();
-                    winners.Add(candidates[i]);
+                    winners.Add(_candidates[i]);
                 }
-                else if (candidates[i].votes == winners[0].votes)
+                else if (_candidates[i].Votes == winners[0].Votes)
                 {
-                    winners.Add(candidates[i]);
+                    winners.Add(_candidates[i]);
                 }
             }
             return winners;
