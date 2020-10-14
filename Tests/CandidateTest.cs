@@ -84,6 +84,7 @@ namespace Tests
         [InlineData("Armando  ")]
         [InlineData("Armando d")]
         [InlineData("Armando 9")]
+        [InlineData("Armando --")]
         [InlineData("Armando9 Oliveira")]
         [InlineData("Armando Oliveira Mendes8")]
         public void Should_return_false_when_name_is_invalid(string name)

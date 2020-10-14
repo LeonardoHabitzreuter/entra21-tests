@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace Domain
@@ -10,18 +11,7 @@ namespace Domain
         public string CPF { get; private set; }
         public int Votes { get; private set; } = 0;
 
-        public Candidate(string name, string cpf)
-        {
-            Name = name;
-            CPF = cpf;
-        }
-
-        public void Vote()
-        {
-            Votes++;
-        }
-
-        public bool Validate()
+        private bool ValidateCPF()
         {
             if (string.IsNullOrEmpty(CPF))
             {
@@ -87,6 +77,59 @@ namespace Domain
             }
 
             return false;
+        }
+
+        private bool ValidateName()
+        {
+            if (string.IsNullOrEmpty(Name))
+            {
+                return false;
+            }
+
+            var words = Name.Split(' ');
+            if (words.Length < 2)
+            {
+                return false;
+            }
+
+            foreach (var word in words)
+            {
+                if (word.Trim().Length < 2)
+                {
+                    return false;
+                }
+                if (word.Any(x => !char.IsLetter(x)))
+                {
+                    return false;
+                }
+            }
+
+            return true;
+        }
+
+        public Candidate(string name, string cpf)
+        {
+            Name = name;
+            CPF = cpf;
+        }
+
+        public void Vote()
+        {
+            Votes++;
+        }
+    
+        public (IList<string> errors, bool isValid) Validate()
+        {
+            var errors = new List<string>();
+            if (!ValidateCPF())
+            {
+                errors.Add("CPF inválido.");
+            }
+            if (!ValidateName())
+            {
+                errors.Add("Nome inválido.");
+            }
+            return (errors, errors.Count == 0);
         }
     }
 }
